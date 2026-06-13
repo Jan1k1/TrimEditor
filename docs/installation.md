@@ -18,14 +18,14 @@
 4. Start or restart the server.
 
 On first start TrimEditor writes a default `config.yml` and an English language
-file. No further setup is required — the editor works immediately.
+file. No further setup is required; the editor works immediately.
 
 ## Verifying
 
 After the server boots:
 
-- Run `/te` while holding a piece of trimmable armor — the editor should open.
-- Run `/te reload` as an operator — you should see a reload confirmation.
+- Run `/te` while holding a piece of trimmable armor. The editor should open.
+- Run `/te reload` as an operator. You should see a reload confirmation.
 
 If `/te` reports that you must hold armor, you are either holding a non-armor
 item or a piece that cannot be trimmed (for example leather armor variants

@@ -40,7 +40,7 @@ Required options are hidden from the picker when the player lacks the item or
 permission. If the player has no usable required template/material at all, `/te`
 does not open the editor.
 
-Costs are validated and consumed **only on a successful apply** — after the held
+Costs are validated and consumed **only on a successful apply**, after the held
 item's [fingerprint](#safety) passes. Players with `trimeditor.bypass.cost` skip
 requirements and money costs entirely.
 
@@ -107,7 +107,7 @@ On every startup TrimEditor:
 3. bumps `config-version` to the current schema,
 4. saves the file only if something actually changed.
 
-This means upgrading the jar never overwrites your settings — you simply gain the
+This means upgrading the jar never overwrites your settings. You simply gain the
 new defaults for keys you did not have yet.
 
 ## Safety
@@ -117,4 +117,4 @@ the editor opens, TrimEditor records a fingerprint of the held armor that
 includes its type, current trim, enchantments, name, lore and custom data (but
 ignores durability). On apply it re-checks the held item against that
 fingerprint; if the item is gone or has changed, the edit is cancelled and
-nothing — items or money — is consumed.
+nothing, items or money, is consumed.

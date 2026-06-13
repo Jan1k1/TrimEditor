@@ -22,7 +22,7 @@ options, where `<key>` is the trim's key (for example `trimeditor.pattern.sentry
 or `trimeditor.material.netherite`).
 
 When a player lacks the node for an option, that option is **hidden** from the
-picker rather than shown as a locked placeholder — no dead clicks, no clutter.
+picker rather than shown as a locked placeholder. No dead clicks, no clutter.
 
 Both families default to `true`, so trims are fully available until you start
 revoking them. To run an allowlist instead, revoke the wildcard and grant only
@@ -41,4 +41,4 @@ permissions:
 
 `trimeditor.bypass.cost` lets a player apply trims without meeting
 [requirements](configuration.md#requirements) or paying the economy cost. It is
-op-only by default — useful for staff and creative builders.
+op-only by default, useful for staff and creative builders.

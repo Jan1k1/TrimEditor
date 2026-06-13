@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - **JDK 21** (the build targets Java 21 bytecode).
-- No local Gradle install needed — use the bundled wrapper.
+- No local Gradle install needed. Use the bundled wrapper.
 
 ## Build
 
@@ -26,7 +26,7 @@ The shaded plugin jar is written to `build/libs/TrimEditor-<version>.jar`.
 | `./gradlew runServer` | Boot a local Paper 1.21 test server with TrimEditor, Vault, ViaVersion, and ViaBackwards |
 
 `runServer` downloads a Paper server and the plugin's runtime dependencies on
-first use, then launches it with TrimEditor installed — handy for manual testing.
+first use, then launches it with TrimEditor installed. Handy for manual testing.
 
 ## Tech stack
 

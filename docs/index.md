@@ -13,7 +13,7 @@ No anvils, no smithing-table grind, no NMS.
 ## Why TrimEditor
 
 - **Held-item editing.** The editor opens only when you hold trimmable armor and
-  edits the real item in place — it never rebuilds the armor from its material,
+  edits the real item in place. It never rebuilds the armor from its material,
   so enchantments, name, lore, durability and custom data are preserved.
 - **Safe by design.** The held item is fingerprinted when the editor opens and
   re-checked on apply. If it changed in the meantime, the edit is cancelled and
@@ -38,7 +38,7 @@ No anvils, no smithing-table grind, no NMS.
 2. Hold a piece of trimmable armor.
 3. Run `/te` (or `/trimeditor`).
 
-That's it — the editor is usable with zero configuration. When you want costs or
+That's it. The editor is usable with zero configuration. When you want costs or
 permission gating, head to [Configuration](configuration.md) and
 [Permissions](permissions.md).
 
