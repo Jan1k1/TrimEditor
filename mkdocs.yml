@@ -1,0 +1,60 @@
+site_name: TrimEditor
+site_description: A lightweight Paper plugin for editing armor trims on the item in your hand.
+site_author: jan1k
+site_url: https://jan1k1.github.io/TrimEditor/
+repo_name: Jan1k1/TrimEditor
+repo_url: https://github.com/Jan1k1/TrimEditor
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2026 jan1k
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Commands: commands.md
+  - Permissions: permissions.md
+  - Configuration: configuration.md
+  - Building: building.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+
+plugins:
+  - search
