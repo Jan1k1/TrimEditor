@@ -9,8 +9,9 @@
 
 ## Steps
 
-1. Download `TrimEditor-<version>.jar` from the
-   [releases page](https://github.com/Jan1k1/TrimEditor/releases), or
+1. Download `TrimEditor-<version>.jar` from
+   [Spigot](https://www.spigotmc.org/resources/trimeditor-modern-armor-trim-gui-paper-1-21.136146/),
+   the [releases page](https://github.com/Jan1k1/TrimEditor/releases), or
    [build it from source](building.md).
 2. Place the jar in your server's `plugins/` directory.
 3. *(Optional)* Install Vault and an economy provider for costs.

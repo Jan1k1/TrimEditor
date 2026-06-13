@@ -16,6 +16,7 @@ TrimEditor targets Paper and Folia servers on Minecraft 1.21+. It provides a GUI
 
 ## Source
 
+- [Spigot Resource](https://www.spigotmc.org/resources/trimeditor-modern-armor-trim-gui-paper-1-21.136146/): Public plugin page and downloads.
 - [GitHub Repository](https://github.com/Jan1k1/TrimEditor): Source code, issues, commits, and CI.
 - [README](https://github.com/Jan1k1/TrimEditor/blob/main/README.md): Short project overview.
 

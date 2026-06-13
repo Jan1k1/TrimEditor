@@ -12,6 +12,7 @@ table grind, no NMS.
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 > **Docs:** https://jan1k1.github.io/TrimEditor/
+> **Spigot:** https://www.spigotmc.org/resources/trimeditor-modern-armor-trim-gui-paper-1-21.136146/
 
 ## Features
 
@@ -39,7 +40,7 @@ table grind, no NMS.
 
 ## Installation
 
-1. Download `TrimEditor-<version>.jar` from the [releases page](https://github.com/Jan1k1/TrimEditor/releases).
+1. Download `TrimEditor-<version>.jar` from [Spigot](https://www.spigotmc.org/resources/trimeditor-modern-armor-trim-gui-paper-1-21.136146/) or the [releases page](https://github.com/Jan1k1/TrimEditor/releases).
 2. Drop it into your server's `plugins/` folder.
 3. Restart the server. A default `config.yml` is generated on first run.
 

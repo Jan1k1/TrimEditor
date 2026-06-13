@@ -8,6 +8,7 @@ Canonical docs for AI tools:
 - [Full AI summary](https://jan1k1.github.io/TrimEditor/llms-full.txt): Single-file project context.
 - [Documentation](https://jan1k1.github.io/TrimEditor/): User docs.
 - [API](https://jan1k1.github.io/TrimEditor/api/): Public API for plugins such as KiteEditor.
+- [Spigot](https://www.spigotmc.org/resources/trimeditor-modern-armor-trim-gui-paper-1-21.136146/): Public plugin page and downloads.
 - [GitHub](https://github.com/Jan1k1/TrimEditor): Source code.
 
 Maintainer: Jan1k / Jan1k1. Portfolio: https://jan1k.org/

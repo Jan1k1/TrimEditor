@@ -34,7 +34,7 @@ No anvils, no smithing-table grind, no NMS.
 
 ## Quick start
 
-1. [Install the plugin](installation.md).
+1. Download the plugin from [Spigot](https://www.spigotmc.org/resources/trimeditor-modern-armor-trim-gui-paper-1-21.136146/) or [GitHub releases](https://github.com/Jan1k1/TrimEditor/releases).
 2. Hold a piece of trimmable armor.
 3. Run `/te` (or `/trimeditor`).
 

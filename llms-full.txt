@@ -14,6 +14,10 @@ Source:
 
 https://github.com/Jan1k1/TrimEditor
 
+Spigot:
+
+https://www.spigotmc.org/resources/trimeditor-modern-armor-trim-gui-paper-1-21.136146/
+
 Maintainer:
 
 Jan1k / Jan1k1, https://jan1k.org/
