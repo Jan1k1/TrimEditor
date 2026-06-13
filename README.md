@@ -76,7 +76,7 @@ See [API](https://jan1k1.github.io/TrimEditor/api/) for a KiteEditor-style setup
 git clone https://github.com/Jan1k1/TrimEditor.git
 cd TrimEditor
 ./gradlew build        # runs tests and produces build/libs/TrimEditor-<version>.jar
-./gradlew runServer    # boots a local Paper 1.21 test server with the plugin
+./gradlew runServer    # boots local Paper with TrimEditor, Vault, ViaVersion, ViaBackwards
 ```
 
 ## License
