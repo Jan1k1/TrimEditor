@@ -14,6 +14,7 @@ enum class ScreenId {
 interface Screen {
     val id: ScreenId
     val title: String
+    val size: Int
 
     fun buttons(context: ScreenRenderContext): List<Button>
 }

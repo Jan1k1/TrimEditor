@@ -5,6 +5,7 @@ run/
 server/
 *.iml
 .idea/
+.claude/
 out/
 *.log
 hs_err_pid*

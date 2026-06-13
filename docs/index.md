@@ -19,8 +19,8 @@ No anvils, no smithing-table grind, no NMS.
 - **Free by default, flexible when you need it.** Template requirements,
   material requirements, and Vault economy are off out of the box. Costs are
   only taken on a successful apply.
-- **Quiet, sharp UI.** Per-action sounds, paged pattern/material pickers, and
-  clean back navigation.
+- **Quiet, sharp UI.** Compact pattern/material pickers, per-action sounds, and
+  a final preview before apply.
 
 ## Compatibility
 

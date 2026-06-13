@@ -7,26 +7,23 @@ import org.jan1k.plugin.trimeditor.trim.TrimMaterialOption
 class MaterialScreen : Screen {
     override val id = ScreenId.MATERIALS
     override val title = "ᴛʀɪᴍ ᴇᴅɪᴛᴏʀ › ᴍᴀᴛᴇʀɪᴀʟѕ"
+    override val size = 27
 
     override fun buttons(context: ScreenRenderContext): List<Button> {
         val settings = context.config.requirementSettings()
         val options = context.requirements.visibleMaterials(context.player.inventory, settings)
             .filter { context.player.canUse(it) }
 
-        val back = Button(45, buttonItem(Material.ARROW, "« ${smallCaps("back")}")) {
+        val back = Button(22, buttonItem(Material.ARROW)) {
             gui.show(player, session, ScreenId.PATTERNS)
-        }
-        val close = Button(49, buttonItem(Material.BARRIER, "« ${smallCaps("close")}")) {
-            gui.close(player)
         }
 
         return listOf(back) + options.zip(optionSlots)
-            .map { (option, slot) -> material(slot, option) } +
-            close
+            .map { (option, slot) -> material(slot, option) }
     }
 
     private fun material(slot: Int, option: TrimMaterialOption): Button =
-        Button(slot, buttonItem(option.ingredientItem, smallCaps(option.material.key().value()))) {
+        Button(slot, buttonItem(option.ingredientItem)) {
             session.material = option.material
             gui.show(player, session, ScreenId.CONFIRM)
         }
@@ -37,6 +34,6 @@ class MaterialScreen : Screen {
     }
 
     companion object {
-        private val optionSlots = listOf(10, 11, 12, 13, 14, 15, 16, 21, 22, 23)
+        private val optionSlots = listOf(10, 11, 12, 13, 14, 15, 16, 19, 20, 21)
     }
 }

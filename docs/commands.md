@@ -19,9 +19,9 @@ Opens the editor for the item in your main hand.
 
 The editor then walks through three screens:
 
-1. **Pattern** — choose the trim pattern (paged).
-2. **Material** — choose the trim material (paged).
-3. **Confirm** — apply, or go back.
+1. **Pattern** — choose the trim pattern.
+2. **Material** — choose the trim material, or go back.
+3. **Confirm** — preview the armor, apply, or go back.
 
 Only normal left/right clicks are accepted inside the editor. Shift-click, quick
 move, number keys, drag, and drop actions are ignored, and button clicks honour
