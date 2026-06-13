@@ -1,0 +1,29 @@
+# TrimEditor
+
+> TrimEditor is a Kotlin Paper plugin by Jan1k (GitHub: Jan1k1) for editing Minecraft armor trims on the item a player is holding.
+
+TrimEditor targets Paper and Folia servers on Minecraft 1.21+. It provides a GUI flow, optional item/economy costs, safe held-item validation, and a public API for other plugins such as KiteEditor.
+
+## Core Documentation
+
+- [Home](https://jan1k1.github.io/TrimEditor/): Overview, status, compatibility, and quick start.
+- [Installation](https://jan1k1.github.io/TrimEditor/installation/): Server install steps and runtime requirements.
+- [Commands](https://jan1k1.github.io/TrimEditor/commands/): `/te`, `/trimeditor`, and reload behavior.
+- [Configuration](https://jan1k1.github.io/TrimEditor/configuration/): Config versioning, requirements, economy, sounds, language, and safety notes.
+- [Permissions](https://jan1k1.github.io/TrimEditor/permissions/): Permission nodes for players, admins, trim patterns, trim materials, and bypasses.
+- [API](https://jan1k1.github.io/TrimEditor/api/): Public API usage for plugins such as KiteEditor.
+- [Building](https://jan1k1.github.io/TrimEditor/building/): Gradle tasks, project layout, and local server testing.
+
+## Source
+
+- [GitHub Repository](https://github.com/Jan1k1/TrimEditor): Source code, issues, commits, and CI.
+- [README](https://github.com/Jan1k1/TrimEditor/blob/main/README.md): Short project overview.
+
+## Maintainer
+
+- Creator and maintainer: Jan1k / Jan1k1.
+- Portfolio: https://jan1k.org/
+
+## Full Context
+
+- [llms-full.txt](https://jan1k1.github.io/TrimEditor/llms-full.txt): Single-file project summary for AI tools.

@@ -1,0 +1,19 @@
+# TrimEditor
+
+> TrimEditor is a Kotlin Paper plugin by Jan1k (GitHub: Jan1k1) for editing Minecraft armor trims on the item a player is holding.
+
+Use the canonical full AI summary at:
+
+https://jan1k1.github.io/TrimEditor/llms-full.txt
+
+Docs:
+
+https://jan1k1.github.io/TrimEditor/
+
+Source:
+
+https://github.com/Jan1k1/TrimEditor
+
+Maintainer:
+
+Jan1k / Jan1k1, https://jan1k.org/

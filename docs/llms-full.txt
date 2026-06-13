@@ -1,0 +1,149 @@
+# TrimEditor
+
+> TrimEditor is a Kotlin Paper plugin by Jan1k (GitHub: Jan1k1) for editing Minecraft armor trims on the item a player is holding.
+
+## Project
+
+TrimEditor is built for Paper and Folia servers running Minecraft 1.21+. The first supported mode is held-item armor trim editing. A player holds a trimmable armor item, runs `/te` or `/trimeditor`, picks a trim pattern, picks a trim material, then confirms the edit.
+
+The plugin avoids NMS and uses Paper/Bukkit APIs. It preserves the item instead of rebuilding it from scratch. The held item is fingerprinted when the editor opens and checked again before apply. If the item changed or disappeared, the edit is cancelled and no configured item or money costs are consumed.
+
+Creator and maintainer: Jan1k / Jan1k1.
+
+Portfolio: https://jan1k.org/
+
+Repository: https://github.com/Jan1k1/TrimEditor
+
+Docs: https://jan1k1.github.io/TrimEditor/
+
+## Features
+
+- Held-item armor trim editing.
+- Pattern -> material -> confirm GUI flow.
+- Optional template requirements.
+- Optional material requirements.
+- Optional Vault economy cost.
+- Per-action sounds.
+- Reloadable config and language files.
+- Public API for other plugins.
+- Folia-aware scheduler adapter.
+- Java 21, Kotlin, Paper API.
+
+## Commands
+
+`/trimeditor` opens the editor for the held armor item.
+
+`/te` is an alias for `/trimeditor`.
+
+`/te reload` closes open editor sessions, reloads config and language files, and reports reload time.
+
+## Permissions
+
+- `trimeditor.use`: open the editor.
+- `trimeditor.reload`: use `/te reload`.
+- `trimeditor.admin`: admin parent permission.
+- `trimeditor.bypass.cost`: skip item requirements and economy cost.
+- `trimeditor.pattern.<key>`: use a specific trim pattern.
+- `trimeditor.material.<key>`: use a specific trim material.
+- `trimeditor.pattern.*`: use all trim patterns.
+- `trimeditor.material.*`: use all trim materials.
+
+## Configuration
+
+The config file uses `config-version`. TrimEditor migrates missing keys without replacing existing values.
+
+Requirements are free by default:
+
+```yaml
+requirements:
+  enabled: false
+  require-template: false
+  require-material: false
+  consume-template: true
+  consume-material: true
+```
+
+Economy is off by default:
+
+```yaml
+economy:
+  enabled: false
+  cost: 0.0
+```
+
+GUI cooldown defaults to 300ms:
+
+```yaml
+gui:
+  cooldown-ms: 300
+```
+
+Sounds are configured per action under `sounds`.
+
+## API
+
+TrimEditor registers `org.jan1k.plugin.trimeditor.api.TrimEditorApi` as a Bukkit service. Other plugins should use `TrimEditorProvider.get()` and treat a null result as "TrimEditor is not installed".
+
+Basic Kotlin usage:
+
+```kotlin
+val api = TrimEditorProvider.get() ?: return
+if (api.apiVersion() != 1) return
+
+when (api.openEditor(player)) {
+    TrimEditorOpenResult.OPENED -> Unit
+    TrimEditorOpenResult.NO_PERMISSION -> player.sendMessage("No permission.")
+    TrimEditorOpenResult.NOT_ARMOR -> player.sendMessage("Hold armor.")
+    TrimEditorOpenResult.MISSING_REQUIREMENTS -> player.sendMessage("Missing trim items.")
+}
+```
+
+`openEditor(player)` opens TrimEditor's normal GUI and checks `trimeditor.use`.
+
+`openEditor(player, false)` opens the GUI without checking `trimeditor.use`; use this only if the calling plugin already checked permissions.
+
+`isEditableArmor(item)` returns whether an item can be trimmed.
+
+`withTrim(item, pattern, material)` returns a cloned item with the trim applied, or null for non-armor.
+
+`patterns()` and `materials()` return the full trim catalog.
+
+`visiblePatterns(player)` and `visibleMaterials(player)` apply TrimEditor's permission and requirement filters.
+
+KiteEditor should soft-depend on TrimEditor:
+
+```yaml
+softdepend:
+  - TrimEditor
+```
+
+Compile against the TrimEditor jar:
+
+```kotlin
+dependencies {
+    compileOnly(files("libs/TrimEditor-0.1.0.jar"))
+}
+```
+
+## Build
+
+Main verification command:
+
+```powershell
+.\gradlew.bat clean test shadowJar --warning-mode all
+```
+
+Local test server:
+
+```powershell
+.\gradlew.bat runServer
+```
+
+The shaded jar is written to `build/libs/TrimEditor-0.1.0.jar`.
+
+## Important URLs
+
+- Documentation: https://jan1k1.github.io/TrimEditor/
+- API docs: https://jan1k1.github.io/TrimEditor/api/
+- GitHub: https://github.com/Jan1k1/TrimEditor
+- Maintainer portfolio: https://jan1k.org/
