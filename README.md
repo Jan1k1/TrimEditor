@@ -15,8 +15,8 @@ table grind, no NMS.
 
 - **Held-item editing** — opens only when you hold trimmable armor; edits the
   real item in place and never rebuilds it from scratch.
-- **Three-step flow** — pattern → material → confirm, with a preview before
-  applying.
+- **Three-step flow** — pattern → material → hopper confirm, with a preview
+  before applying.
 - **Safe by design** — the held item is fingerprinted on open and re-checked on
   apply; if it changed, the edit is cancelled and nothing is spent.
 - **Optional requirements** — off by default. Templates and materials can be

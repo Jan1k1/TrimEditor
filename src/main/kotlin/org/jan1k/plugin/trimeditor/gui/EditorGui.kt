@@ -65,7 +65,12 @@ class EditorGui(
         val screen = screens.getValue(screenId)
         val buttons = screen.buttons(ScreenRenderContext(player, session, configProvider(), requirements))
         val holder = EditorHolder(player.uniqueId, screenId, buttons)
-        val inventory = Bukkit.createInventory(holder, screen.size, screen.title)
+        val inventoryType = screen.inventoryType
+        val inventory = if (inventoryType == null) {
+            Bukkit.createInventory(holder, screen.size, screen.title)
+        } else {
+            Bukkit.createInventory(holder, inventoryType, screen.title)
+        }
 
         holder.attach(inventory)
         session.screen = screenId

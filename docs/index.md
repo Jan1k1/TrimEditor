@@ -20,7 +20,7 @@ No anvils, no smithing-table grind, no NMS.
   material requirements, and Vault economy are off out of the box. Costs are
   only taken on a successful apply.
 - **Quiet, sharp UI.** Compact pattern/material pickers, per-action sounds, and
-  a final preview before apply.
+  a hopper preview before apply.
 
 ## Compatibility
 

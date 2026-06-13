@@ -6,7 +6,7 @@ import org.jan1k.plugin.trimeditor.trim.TrimPatternOption
 class PatternScreen : Screen {
     override val id = ScreenId.PATTERNS
     override val title = "ᴛʀɪᴍ ᴇᴅɪᴛᴏʀ › ᴘᴀᴛᴛᴇʀɴѕ"
-    override val size = 27
+    override val size = 18
 
     override fun buttons(context: ScreenRenderContext): List<Button> {
         val settings = context.config.requirementSettings()

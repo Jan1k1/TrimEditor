@@ -1,6 +1,7 @@
 package org.jan1k.plugin.trimeditor.gui
 
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.InventoryType
 import org.jan1k.plugin.trimeditor.config.PluginConfig
 import org.jan1k.plugin.trimeditor.cost.RequirementService
 import org.jan1k.plugin.trimeditor.session.EditSession
@@ -15,6 +16,8 @@ interface Screen {
     val id: ScreenId
     val title: String
     val size: Int
+    val inventoryType: InventoryType?
+        get() = null
 
     fun buttons(context: ScreenRenderContext): List<Button>
 }
