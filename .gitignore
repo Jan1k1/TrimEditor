@@ -1,0 +1,11 @@
+.gradle/
+.worktrees/
+build/
+run/
+server/
+*.iml
+.idea/
+out/
+*.log
+hs_err_pid*
+replay_pid*

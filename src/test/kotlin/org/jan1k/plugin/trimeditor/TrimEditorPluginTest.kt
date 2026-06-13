@@ -1,0 +1,21 @@
+package org.jan1k.plugin.trimeditor
+
+import org.mockbukkit.mockbukkit.MockBukkit
+import kotlin.test.AfterTest
+import kotlin.test.Test
+import kotlin.test.assertTrue
+
+class TrimEditorPluginTest {
+    @AfterTest
+    fun tearDown() {
+        MockBukkit.unmock()
+    }
+
+    @Test
+    fun `plugin enables`() {
+        MockBukkit.mock()
+        val plugin = MockBukkit.load(TrimEditorPlugin::class.java)
+
+        assertTrue(plugin.isEnabled)
+    }
+}
