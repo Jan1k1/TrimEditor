@@ -1,13 +1,26 @@
+# TrimEditor configuration.
+# Docs: https://jan1k1.github.io/TrimEditor/
+#
+# Do not change config-version by hand. On startup TrimEditor adds any missing
+# keys and bumps this number, keeping your existing values untouched.
 config-version: 1
-gui:
-  cooldown-ms: 300
 
 requirements:
+  # When false (default), editing trims is free and every pattern/material is
+  # offered. When true, the editor only opens if the player owns a usable
+  # template and material, and the lists are filtered to what they can use.
   enabled: false
 
 gui:
+  # Minimum delay between accepted button clicks, per player, in milliseconds.
+  # Guards against double-clicks and click-spam. 0 disables the cooldown.
   cooldown-ms: 300
 
+# Sound played for each editor action. Each entry takes:
+#   enabled - play this sound at all
+#   sound   - a namespaced sound key (minecraft:... or a resource pack key)
+#   volume  - 0.0 and up; also controls how far the sound carries
+#   pitch   - 0.5 (low) to 2.0 (high)
 sounds:
   open:
     enabled: true
