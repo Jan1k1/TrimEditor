@@ -41,6 +41,7 @@ first use, then launches it with TrimEditor installed — handy for manual testi
 
 ```
 src/main/kotlin/org/jan1k/plugin/trimeditor/
+  api/        # public Bukkit service for other plugins
   command/    # /te command + tab completion
   config/     # config model, loader, migration
   cost/       # requirements + economy (Vault) services

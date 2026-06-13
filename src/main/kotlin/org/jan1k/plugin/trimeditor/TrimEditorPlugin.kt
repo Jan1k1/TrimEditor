@@ -1,7 +1,10 @@
 package org.jan1k.plugin.trimeditor
 
 import org.bukkit.plugin.java.JavaPlugin
+import org.bukkit.plugin.ServicePriority
 import org.bstats.bukkit.Metrics
+import org.jan1k.plugin.trimeditor.api.TrimEditorApi
+import org.jan1k.plugin.trimeditor.api.TrimEditorApiService
 import org.jan1k.plugin.trimeditor.command.TrimEditorCommand
 import org.jan1k.plugin.trimeditor.config.ConfigLoader
 import org.jan1k.plugin.trimeditor.config.PluginConfig
@@ -23,6 +26,7 @@ open class TrimEditorPlugin : JavaPlugin() {
         private set
 
     private lateinit var gui: EditorGui
+    private lateinit var api: TrimEditorApi
 
     override fun onEnable() {
         reloadSettings()
@@ -35,6 +39,8 @@ open class TrimEditorPlugin : JavaPlugin() {
             ReflectiveVaultEconomyService.resolve(server),
             { lang },
         )
+        api = TrimEditorApiService(this, gui)
+        server.servicesManager.register(TrimEditorApi::class.java, api, this, ServicePriority.Normal)
 
         val command = TrimEditorCommand(this, sessionManager, gui)
         getCommand("trimeditor")?.setExecutor(command)
@@ -44,6 +50,8 @@ open class TrimEditorPlugin : JavaPlugin() {
     }
 
     override fun onDisable() {
+        server.servicesManager.unregisterAll(this)
+
         if (::sessionManager.isInitialized) {
             sessionManager.closeAll()
         }

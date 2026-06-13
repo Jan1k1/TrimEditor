@@ -24,6 +24,7 @@ table grind, no NMS.
 - **Optional economy** — soft-depends on [Vault](https://www.spigotmc.org/resources/vault.34315/);
   costs are charged only on a successful apply.
 - **Configurable sounds** and reloadable config/language files.
+- **Public API** for plugins that want to open the editor or reuse trim logic.
 - **Folia-aware** scheduling.
 
 ## Requirements
@@ -63,6 +64,11 @@ Hold a piece of trimmable armor and run:
 | `trimeditor.material.<key>` | everyone | Use a specific trim material |
 
 Full reference: [Permissions](https://jan1k1.github.io/TrimEditor/permissions/).
+
+## API
+
+Other plugins can soft-depend on TrimEditor and use `TrimEditorProvider.get()`.
+See [API](https://jan1k1.github.io/TrimEditor/api/) for a KiteEditor-style setup.
 
 ## Building from source
 

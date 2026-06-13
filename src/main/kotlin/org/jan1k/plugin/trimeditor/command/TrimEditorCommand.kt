@@ -7,10 +7,9 @@ import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
 import org.jan1k.plugin.trimeditor.TrimEditorPlugin
-import org.jan1k.plugin.trimeditor.cost.RequirementService
-import org.jan1k.plugin.trimeditor.cost.TrimRequirementSettings
+import org.jan1k.plugin.trimeditor.api.TrimEditorOpenResult
+import org.jan1k.plugin.trimeditor.api.TrimEditorProvider
 import org.jan1k.plugin.trimeditor.gui.EditorGui
-import org.jan1k.plugin.trimeditor.item.ArmorTrimEditor
 import org.jan1k.plugin.trimeditor.session.SessionManager
 import java.util.logging.Level
 
@@ -20,7 +19,6 @@ class TrimEditorCommand(
     private val gui: EditorGui,
 ) : CommandExecutor, TabCompleter {
     private val mini = MiniMessage.miniMessage()
-    private val requirements = RequirementService()
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (args.firstOrNull()?.equals("reload", ignoreCase = true) == true) {
@@ -32,24 +30,11 @@ class TrimEditorCommand(
             return true
         }
 
-        if (!sender.hasPermission("trimeditor.use")) {
-            send(sender, plugin.lang.message("errors.no-permission"))
-            return true
-        }
-
-        if (!ArmorTrimEditor.isEditableArmor(sender.inventory.itemInMainHand)) {
-            send(sender, plugin.lang.message("errors.not-armor"))
-            return true
-        }
-
-        val precheck = requirements.precheck(sender.inventory, requirementSettings(sender))
-        if (!precheck.canOpen) {
-            send(sender, plugin.lang.message("errors.requirements"))
-            return true
-        }
-
-        if (!gui.open(sender)) {
-            send(sender, plugin.lang.message("errors.not-armor"))
+        when (TrimEditorProvider.require().openEditor(sender)) {
+            TrimEditorOpenResult.OPENED -> Unit
+            TrimEditorOpenResult.NO_PERMISSION -> send(sender, plugin.lang.message("errors.no-permission"))
+            TrimEditorOpenResult.NOT_ARMOR -> send(sender, plugin.lang.message("errors.not-armor"))
+            TrimEditorOpenResult.MISSING_REQUIREMENTS -> send(sender, plugin.lang.message("errors.requirements"))
         }
         return true
     }
@@ -89,13 +74,5 @@ class TrimEditorCommand(
 
     private fun send(sender: CommandSender, raw: String) {
         sender.sendMessage(mini.deserialize(raw))
-    }
-
-    private fun requirementSettings(player: Player): TrimRequirementSettings {
-        return if (player.hasPermission("trimeditor.bypass.cost")) {
-            TrimRequirementSettings()
-        } else {
-            plugin.pluginConfig.requirementSettings()
-        }
     }
 }
