@@ -1,0 +1,18 @@
+locale: en
+prefix: "<dark_gray>[<aqua>ᴛʀɪᴍ<dark_gray>] "
+messages:
+  admin:
+    reload: "<prefix><green>ʀᴇʟᴏᴀᴅᴇᴅ<gray>."
+    reload-failed: "<prefix><red>ʀᴇʟᴏᴀᴅ failed<gray>. Check console."
+  errors:
+    no-permission: "<red>No permission."
+    player-only: "<red>Players only."
+    not-armor: "<red>Hold armor to edit trims."
+    busy: "<red>Slow down."
+    requirements: "<red>You need the pattern and material first."
+  gui:
+    title: "<dark_gray>Trim Editor"
+    patterns: "<white>Patterns"
+    materials: "<white>Materials"
+    apply: "<green>Apply"
+    close: "<gray>Close"

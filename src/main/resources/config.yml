@@ -1,1 +1,46 @@
 config-version: 1
+gui:
+  cooldown-ms: 300
+
+requirements:
+  enabled: false
+
+gui:
+  cooldown-ms: 300
+
+sounds:
+  open:
+    enabled: true
+    sound: minecraft:block.smithing_table.use
+    volume: 0.75
+    pitch: 1.15
+  select-pattern:
+    enabled: true
+    sound: minecraft:item.armor.equip_chain
+    volume: 0.65
+    pitch: 1.25
+  select-material:
+    enabled: true
+    sound: minecraft:item.armor.equip_netherite
+    volume: 0.65
+    pitch: 1.35
+  apply:
+    enabled: true
+    sound: minecraft:block.smithing_table.use
+    volume: 0.9
+    pitch: 1.0
+  page:
+    enabled: true
+    sound: minecraft:item.book.page_turn
+    volume: 0.6
+    pitch: 1.2
+  close:
+    enabled: true
+    sound: minecraft:block.chest.close
+    volume: 0.5
+    pitch: 1.0
+  deny:
+    enabled: true
+    sound: minecraft:block.note_block.bass
+    volume: 0.7
+    pitch: 0.7
