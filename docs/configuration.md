@@ -6,7 +6,7 @@ in-game with [`/te reload`](commands.md#te-reload).
 ## `config-version`
 
 ```yaml
-config-version: 1
+config-version: 2
 ```
 
 Tracks the config schema. **Do not edit this by hand.** On startup TrimEditor
@@ -18,21 +18,43 @@ differ.
 ```yaml
 requirements:
   enabled: false
+  require-template: false
+  require-material: false
+  consume-template: true
+  consume-material: true
 ```
 
 When `enabled` is `false` (the default), editing trims is free and every pattern
 and material is offered.
 
-When `true`:
+Turn on `enabled`, then choose what is required:
 
-- `/te` only opens if the player owns at least one usable trim **template** and
-  one usable trim **material**; otherwise they get a message instead of a
-  dead-end GUI.
-- The pattern and material pickers are filtered to options the player both has
-  [permission](permissions.md) for and owns.
-- Costs are validated and consumed **only on a successful apply** — after the
-  held item's [fingerprint](#safety) passes. Players with
-  `trimeditor.bypass.cost` skip this entirely.
+| Key | Meaning |
+|-----|---------|
+| `require-template` | Needs the matching smithing template for the selected pattern |
+| `require-material` | Needs the matching trim material item |
+| `consume-template` | Takes one template on successful apply when templates are required |
+| `consume-material` | Takes one material on successful apply when materials are required |
+
+Required options are hidden from the picker when the player lacks the item or
+permission. If the player has no usable required template/material at all, `/te`
+does not open the editor.
+
+Costs are validated and consumed **only on a successful apply** — after the held
+item's [fingerprint](#safety) passes. Players with `trimeditor.bypass.cost` skip
+requirements and money costs entirely.
+
+## `economy`
+
+```yaml
+economy:
+  enabled: false
+  cost: 0.0
+```
+
+When enabled, TrimEditor uses Vault if it is installed and withdraws `cost` on a
+successful apply. Without Vault or enough balance, the trim is refused and no
+items are consumed.
 
 ## `gui`
 

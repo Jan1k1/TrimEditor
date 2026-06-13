@@ -3,13 +3,32 @@
 #
 # Do not change config-version by hand. On startup TrimEditor adds any missing
 # keys and bumps this number, keeping your existing values untouched.
-config-version: 1
+config-version: 2
 
 requirements:
-  # When false (default), editing trims is free and every pattern/material is
-  # offered. When true, the editor only opens if the player owns a usable
-  # template and material, and the lists are filtered to what they can use.
+  # Master switch for item requirements. Default is free editing, so players
+  # see every trim pattern and material they have permission for.
   enabled: false
+  # When true, players need the matching smithing template for each pattern.
+  # Pattern buttons are hidden when the player does not own that template.
+  require-template: false
+  # When true, players need the matching trim material item in their inventory.
+  # Material buttons are hidden when the player does not own that item.
+  require-material: false
+  # Removes one template on apply when templates are required.
+  # The item is taken only after the held armor fingerprint passes.
+  consume-template: true
+  # Removes one material item on apply when materials are required.
+  # The item is taken only after the held armor fingerprint passes.
+  consume-material: true
+
+economy:
+  # Requires Vault and a Vault economy plugin when enabled.
+  # Leave false for free editing or item-only costs.
+  enabled: false
+  # Money withdrawn on successful apply.
+  # Nothing is charged if the held item changed or the trim cannot apply.
+  cost: 0.0
 
 gui:
   # Minimum delay between accepted button clicks, per player, in milliseconds.

@@ -18,6 +18,12 @@ class ConfigLoaderTest {
 
         assertEquals(ConfigLoader.CURRENT_VERSION, result.config.configVersion)
         assertFalse(result.config.requirements.enabled)
+        assertFalse(result.config.requirements.requireTemplate)
+        assertFalse(result.config.requirements.requireMaterial)
+        assertTrue(result.config.requirements.consumeTemplate)
+        assertTrue(result.config.requirements.consumeMaterial)
+        assertFalse(result.config.economy.enabled)
+        assertEquals(0.0, result.config.economy.cost)
         assertEquals(300, result.config.gui.cooldownMillis)
         assertTrue(Files.exists(path))
     }
@@ -31,6 +37,13 @@ class ConfigLoaderTest {
             config-version: 0
             requirements:
               enabled: true
+              require-template: true
+              require-material: false
+              consume-template: false
+              consume-material: true
+            economy:
+              enabled: true
+              cost: 12.5
             gui:
               cooldown-ms: 125
             sounds:
@@ -51,6 +64,12 @@ class ConfigLoaderTest {
         assertTrue(result.migrated)
         assertEquals(ConfigLoader.CURRENT_VERSION, migrated.getInt("config-version"))
         assertTrue(result.config.requirements.enabled)
+        assertTrue(result.config.requirements.requireTemplate)
+        assertFalse(result.config.requirements.requireMaterial)
+        assertFalse(result.config.requirements.consumeTemplate)
+        assertTrue(result.config.requirements.consumeMaterial)
+        assertTrue(result.config.economy.enabled)
+        assertEquals(12.5, result.config.economy.cost)
         assertEquals(125, result.config.gui.cooldownMillis)
         assertFalse(apply.enabled)
         assertEquals("minecraft:block.anvil.land", apply.sound)

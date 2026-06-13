@@ -52,7 +52,11 @@ class RequirementServiceTest {
             ItemStack(Material.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE),
             ItemStack(Material.DIAMOND),
         )
-        val settings = TrimRequirementSettings(enabled = true)
+        val settings = TrimRequirementSettings(
+            enabled = true,
+            requireTemplate = true,
+            requireMaterial = true,
+        )
 
         assertEquals(
             listOf(TrimPattern.SENTRY),
@@ -67,7 +71,11 @@ class RequirementServiceTest {
     @Test
     fun `enabled requirements need one template and one material before open`() {
         val player = MockBukkit.getMock()!!.addPlayer()
-        val settings = TrimRequirementSettings(enabled = true)
+        val settings = TrimRequirementSettings(
+            enabled = true,
+            requireTemplate = true,
+            requireMaterial = true,
+        )
 
         val empty = service.precheck(player.inventory, settings, patterns, materials)
         assertFalse(empty.canOpen)
@@ -83,5 +91,24 @@ class RequirementServiceTest {
         player.inventory.addItem(ItemStack(Material.DIAMOND))
         val ready = service.precheck(player.inventory, settings, patterns, materials)
         assertTrue(ready.canOpen)
+    }
+
+    @Test
+    fun `sub options decide what is hidden and checked`() {
+        val player = MockBukkit.getMock()!!.addPlayer()
+        player.inventory.addItem(ItemStack(Material.DIAMOND))
+        val settings = TrimRequirementSettings(
+            enabled = true,
+            requireTemplate = false,
+            requireMaterial = true,
+        )
+
+        val precheck = service.precheck(player.inventory, settings, patterns, materials)
+
+        assertTrue(precheck.canOpen)
+        assertFalse(precheck.missingTemplate)
+        assertFalse(precheck.missingMaterial)
+        assertEquals(patterns, service.visiblePatterns(player.inventory, settings, patterns))
+        assertEquals(listOf(TrimMaterial.DIAMOND), service.visibleMaterials(player.inventory, settings, materials).map { it.material })
     }
 }

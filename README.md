@@ -15,13 +15,12 @@ table grind, no NMS.
 
 - **Held-item editing** — opens only when you hold trimmable armor; edits the
   real item in place and never rebuilds it from scratch.
-- **Three-step flow** — pattern → material → confirm, with a live preview and a
-  back button at every step.
+- **Three-step flow** — pattern → material → confirm, with a back button at
+  every step.
 - **Safe by design** — the held item is fingerprinted on open and re-checked on
   apply; if it changed, the edit is cancelled and nothing is spent.
-- **Optional requirements** — off by default. When enabled, players must own a
-  usable trim template and material, and the lists are filtered per permission
-  and inventory.
+- **Optional requirements** — off by default. Templates and materials can be
+  required separately, and lists are filtered per permission and inventory.
 - **Optional economy** — soft-depends on [Vault](https://www.spigotmc.org/resources/vault.34315/);
   costs are charged only on a successful apply.
 - **Configurable sounds** and reloadable config/language files.

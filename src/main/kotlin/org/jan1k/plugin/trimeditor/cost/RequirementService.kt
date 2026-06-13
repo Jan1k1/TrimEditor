@@ -14,7 +14,7 @@ class RequirementService {
         settings: TrimRequirementSettings,
         options: List<TrimPatternOption> = TrimCatalog.patterns,
     ): List<TrimPatternOption> {
-        if (!settings.enabled) {
+        if (!settings.needsTemplate()) {
             return options
         }
 
@@ -26,7 +26,7 @@ class RequirementService {
         settings: TrimRequirementSettings,
         options: List<TrimMaterialOption> = TrimCatalog.materials,
     ): List<TrimMaterialOption> {
-        if (!settings.enabled) {
+        if (!settings.needsMaterial()) {
             return options
         }
 
@@ -43,8 +43,8 @@ class RequirementService {
             return RequirementPrecheck(canOpen = true, missingTemplate = false, missingMaterial = false)
         }
 
-        val missingTemplate = visiblePatterns(inventory, settings, patterns).isEmpty()
-        val missingMaterial = visibleMaterials(inventory, settings, materials).isEmpty()
+        val missingTemplate = settings.needsTemplate() && visiblePatterns(inventory, settings, patterns).isEmpty()
+        val missingMaterial = settings.needsMaterial() && visibleMaterials(inventory, settings, materials).isEmpty()
 
         return RequirementPrecheck(
             canOpen = !missingTemplate && !missingMaterial,
@@ -66,7 +66,8 @@ class RequirementService {
         val templateItem = TrimCatalog.templateItem(pattern) ?: return false
         val ingredientItem = TrimCatalog.ingredientItem(material) ?: return false
 
-        return inventory.hasAtLeast(templateItem, 1) && inventory.hasAtLeast(ingredientItem, 1)
+        return (!settings.needsTemplate() || inventory.hasAtLeast(templateItem, 1)) &&
+            (!settings.needsMaterial() || inventory.hasAtLeast(ingredientItem, 1))
     }
 
     fun consumeSelection(
@@ -86,11 +87,11 @@ class RequirementService {
         val templateItem = TrimCatalog.templateItem(pattern) ?: return false
         val ingredientItem = TrimCatalog.ingredientItem(material) ?: return false
 
-        if (settings.consumeTemplate) {
+        if (settings.needsTemplate() && settings.consumeTemplate) {
             inventory.takeOne(templateItem)
         }
 
-        if (settings.consumeMaterial) {
+        if (settings.needsMaterial() && settings.consumeMaterial) {
             inventory.takeOne(ingredientItem)
         }
 

@@ -16,11 +16,11 @@ No anvils, no smithing-table grind, no NMS.
 - **Safe by design.** The held item is fingerprinted when the editor opens and
   re-checked on apply. If it changed in the meantime, the edit is cancelled and
   nothing is consumed.
-- **Free by default, flexible when you need it.** Requirements and Vault economy
-  are both off out of the box. Turn them on to charge templates, materials, or
-  money — costs are only taken on a successful apply.
-- **Quiet, sharp UI.** Per-action sounds, paged pattern/material pickers, and a
-  live preview on the confirm screen.
+- **Free by default, flexible when you need it.** Template requirements,
+  material requirements, and Vault economy are off out of the box. Costs are
+  only taken on a successful apply.
+- **Quiet, sharp UI.** Per-action sounds, paged pattern/material pickers, and
+  clean back navigation.
 
 ## Compatibility
 

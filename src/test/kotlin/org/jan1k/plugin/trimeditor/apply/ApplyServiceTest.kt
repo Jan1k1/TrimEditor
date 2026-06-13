@@ -54,7 +54,11 @@ class ApplyServiceTest {
                 handSlot = 0,
                 fingerprint = fingerprint,
                 trim = trim,
-                requirements = TrimRequirementSettings(enabled = true),
+                requirements = TrimRequirementSettings(
+                    enabled = true,
+                    requireTemplate = true,
+                    requireMaterial = true,
+                ),
                 moneyCost = 5.0,
             ),
         )
@@ -82,7 +86,11 @@ class ApplyServiceTest {
                 handSlot = 0,
                 fingerprint = ItemFingerprint.of(armor),
                 trim = trim,
-                requirements = TrimRequirementSettings(enabled = true),
+                requirements = TrimRequirementSettings(
+                    enabled = true,
+                    requireTemplate = true,
+                    requireMaterial = true,
+                ),
                 moneyCost = 5.0,
             ),
         )

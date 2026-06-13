@@ -4,10 +4,18 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ArmorMeta
 import org.bukkit.inventory.meta.Damageable
 
-data class ItemFingerprint private constructor(
+class ItemFingerprint private constructor(
     private val serialized: Map<String, Any>,
     private val trim: String?,
 ) {
+    override fun equals(other: Any?): Boolean {
+        return other is ItemFingerprint && serialized == other.serialized && trim == other.trim
+    }
+
+    override fun hashCode(): Int {
+        return 31 * serialized.hashCode() + trim.hashCode()
+    }
+
     companion object {
         fun of(item: ItemStack): ItemFingerprint {
             val normalized = item.clone()
@@ -18,8 +26,6 @@ data class ItemFingerprint private constructor(
                 normalized.itemMeta = meta
             }
 
-            // serialize() does not reliably capture the armor trim, so fold it in
-            // explicitly: the fingerprint must change when pattern or material changes.
             val trim = (meta as? ArmorMeta)?.trim?.let { armorTrim ->
                 "${armorTrim.pattern.key()}|${armorTrim.material.key()}"
             }

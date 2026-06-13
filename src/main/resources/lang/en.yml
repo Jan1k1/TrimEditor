@@ -1,6 +1,8 @@
 locale: en
 prefix: "<dark_gray>[<aqua>ᴛʀɪᴍ<dark_gray>] "
 messages:
+  success:
+    applied: "<green>ᴛʀɪᴍ applied."
   admin:
     reload: "<prefix><green>ʀᴇʟᴏᴀᴅᴇᴅ<gray> in <time>ms."
     reload-failed: "<prefix><red>ʀᴇʟᴏᴀᴅ failed<gray>. Check console."
@@ -8,8 +10,10 @@ messages:
     no-permission: "<red>No permission."
     player-only: "<red>Players only."
     not-armor: "<red>Hold armor to edit trims."
+    item-changed: "<red>Keep holding the same armor."
     busy: "<red>Slow down."
     requirements: "<red>You need the pattern and material first."
+    money: "<red>You do not have enough money."
   gui:
     title: "<dark_gray>Trim Editor"
     patterns: "<white>Patterns"

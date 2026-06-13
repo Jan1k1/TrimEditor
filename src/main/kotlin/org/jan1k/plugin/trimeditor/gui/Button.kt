@@ -27,3 +27,35 @@ fun buttonItem(material: Material, name: String): ItemStack {
     }
     return stack
 }
+
+fun smallCaps(value: String): String {
+    val letters = mapOf(
+        'a' to 'ᴀ',
+        'b' to 'ʙ',
+        'c' to 'ᴄ',
+        'd' to 'ᴅ',
+        'e' to 'ᴇ',
+        'f' to 'ꜰ',
+        'g' to 'ɢ',
+        'h' to 'ʜ',
+        'i' to 'ɪ',
+        'j' to 'ᴊ',
+        'k' to 'ᴋ',
+        'l' to 'ʟ',
+        'm' to 'ᴍ',
+        'n' to 'ɴ',
+        'o' to 'ᴏ',
+        'p' to 'ᴘ',
+        'q' to 'ǫ',
+        'r' to 'ʀ',
+        's' to 'ѕ',
+        't' to 'ᴛ',
+        'u' to 'ᴜ',
+        'v' to 'ᴠ',
+        'w' to 'ᴡ',
+        'x' to 'х',
+        'y' to 'ʏ',
+        'z' to 'ᴢ',
+    )
+    return value.lowercase().map { letters[it] ?: it }.joinToString("")
+}

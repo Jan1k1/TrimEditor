@@ -9,6 +9,8 @@ plugins {
 group = "org.jan1k.plugin"
 version = "0.1.0"
 
+val pluginVersion = version.toString()
+
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
@@ -35,7 +37,7 @@ tasks {
     processResources {
         filteringCharset = "UTF-8"
         filesMatching("plugin.yml") {
-            expand("version" to project.version)
+            expand("version" to pluginVersion)
         }
     }
 

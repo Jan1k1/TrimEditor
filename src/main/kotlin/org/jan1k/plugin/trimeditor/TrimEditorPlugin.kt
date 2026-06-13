@@ -1,12 +1,15 @@
 package org.jan1k.plugin.trimeditor
 
+import org.bukkit.plugin.java.JavaPlugin
 import org.jan1k.plugin.trimeditor.command.TrimEditorCommand
+import org.jan1k.plugin.trimeditor.config.ConfigLoader
+import org.jan1k.plugin.trimeditor.config.PluginConfig
+import org.jan1k.plugin.trimeditor.cost.ReflectiveVaultEconomyService
 import org.jan1k.plugin.trimeditor.gui.ClickGuard
 import org.jan1k.plugin.trimeditor.gui.EditorGui
 import org.jan1k.plugin.trimeditor.gui.EditorListener
 import org.jan1k.plugin.trimeditor.lang.Lang
 import org.jan1k.plugin.trimeditor.session.SessionManager
-import org.bukkit.plugin.java.JavaPlugin
 
 open class TrimEditorPlugin : JavaPlugin() {
     lateinit var sessionManager: SessionManager
@@ -15,13 +18,22 @@ open class TrimEditorPlugin : JavaPlugin() {
     lateinit var lang: Lang
         private set
 
+    lateinit var pluginConfig: PluginConfig
+        private set
+
     private lateinit var gui: EditorGui
 
     override fun onEnable() {
-        saveDefaultConfig()
+        reloadSettings()
         lang = Lang.load()
         sessionManager = SessionManager()
-        gui = EditorGui(sessionManager, clickCooldownMillis())
+        gui = EditorGui(
+            sessionManager,
+            clickCooldownMillis(),
+            { pluginConfig },
+            ReflectiveVaultEconomyService.resolve(server),
+            { lang },
+        )
 
         val command = TrimEditorCommand(this, sessionManager, gui)
         getCommand("trimeditor")?.setExecutor(command)
@@ -39,9 +51,15 @@ open class TrimEditorPlugin : JavaPlugin() {
         lang = Lang.load()
     }
 
+    fun reloadSettings() {
+        pluginConfig = ConfigLoader().load(dataFolder.toPath().resolve("config.yml")).config
+        reloadConfig()
+    }
+
     fun clickCooldownMillis(): Long {
-        val nested = config.getLong("gui.cooldown-ms", Long.MIN_VALUE)
-        if (nested != Long.MIN_VALUE) return nested.coerceAtLeast(0)
-        return config.getLong("click-cooldown-ms", ClickGuard.DEFAULT_COOLDOWN_MILLIS).coerceAtLeast(0)
+        if (!::pluginConfig.isInitialized) {
+            return ClickGuard.DEFAULT_COOLDOWN_MILLIS
+        }
+        return pluginConfig.gui.cooldownMillis.coerceAtLeast(0)
     }
 }

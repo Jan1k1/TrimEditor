@@ -58,6 +58,14 @@ class ConfigLoader(
             configVersion = yaml.getInt("config-version", CURRENT_VERSION),
             requirements = RequirementsConfig(
                 enabled = yaml.getBoolean("requirements.enabled", false),
+                requireTemplate = yaml.getBoolean("requirements.require-template", false),
+                requireMaterial = yaml.getBoolean("requirements.require-material", false),
+                consumeTemplate = yaml.getBoolean("requirements.consume-template", true),
+                consumeMaterial = yaml.getBoolean("requirements.consume-material", true),
+            ),
+            economy = EconomyConfig(
+                enabled = yaml.getBoolean("economy.enabled", false),
+                cost = yaml.getDouble("economy.cost", 0.0),
             ),
             gui = GuiConfig(
                 cooldownMillis = yaml.getLong("gui.cooldown-ms", 300),
@@ -78,7 +86,7 @@ class ConfigLoader(
     }
 
     companion object {
-        const val CURRENT_VERSION = 1
+        const val CURRENT_VERSION = 2
 
         fun defaultConfig(): YamlConfiguration {
             val stream = ConfigLoader::class.java.classLoader.getResourceAsStream("config.yml")

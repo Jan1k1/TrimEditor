@@ -1,5 +1,6 @@
 package org.jan1k.plugin.trimeditor.item
 
+import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.enchantments.Enchantment
@@ -35,8 +36,8 @@ class ArmorTrimEditorTest {
     fun `applying trim preserves durability and item meta`() {
         val source = ItemStack(Material.DIAMOND_CHESTPLATE)
         val meta = source.itemMeta as ArmorMeta
-        meta.setDisplayName("Kept Name")
-        meta.setLore(listOf("Kept Lore"))
+        meta.displayName(Component.text("Kept Name"))
+        meta.lore(listOf(Component.text("Kept Lore")))
         meta.addEnchant(Enchantment.PROTECTION, 3, true)
         meta.setCustomModelData(91)
         meta.persistentDataContainer.set(key, PersistentDataType.STRING, "kept")
@@ -50,8 +51,8 @@ class ArmorTrimEditorTest {
         assertEquals(Material.DIAMOND_CHESTPLATE, edited.type)
         assertEquals(source.amount, edited.amount)
         val editedMeta = edited.itemMeta as ArmorMeta
-        assertEquals("Kept Name", editedMeta.getDisplayName())
-        assertEquals(listOf("Kept Lore"), editedMeta.getLore())
+        assertEquals(Component.text("Kept Name"), editedMeta.displayName())
+        assertEquals(listOf(Component.text("Kept Lore")), editedMeta.lore())
         assertEquals(3, editedMeta.getEnchantLevel(Enchantment.PROTECTION))
         assertEquals(91, editedMeta.getCustomModelData())
         assertEquals("kept", editedMeta.persistentDataContainer.get(key, PersistentDataType.STRING))
