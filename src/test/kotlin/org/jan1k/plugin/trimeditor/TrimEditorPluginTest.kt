@@ -3,6 +3,7 @@ package org.jan1k.plugin.trimeditor
 import org.mockbukkit.mockbukkit.MockBukkit
 import kotlin.test.AfterTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class TrimEditorPluginTest {
@@ -17,5 +18,10 @@ class TrimEditorPluginTest {
         val plugin = MockBukkit.load(TrimEditorPlugin::class.java)
 
         assertTrue(plugin.isEnabled)
+    }
+
+    @Test
+    fun `uses assigned bstats plugin id`() {
+        assertEquals(31971, TrimEditorPlugin.BSTATS_PLUGIN_ID)
     }
 }

@@ -23,6 +23,8 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7")
 
+    implementation("org.bstats:bstats-bukkit:3.2.1")
+
     testImplementation("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter:6.1.0")
@@ -43,6 +45,7 @@ tasks {
 
     named<ShadowJar>("shadowJar") {
         archiveClassifier.set("")
+        relocate("org.bstats", "org.jan1k.plugin.trimeditor.libs.bstats")
         minimize()
     }
 

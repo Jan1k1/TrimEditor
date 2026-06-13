@@ -1,6 +1,7 @@
 package org.jan1k.plugin.trimeditor
 
 import org.bukkit.plugin.java.JavaPlugin
+import org.bstats.bukkit.Metrics
 import org.jan1k.plugin.trimeditor.command.TrimEditorCommand
 import org.jan1k.plugin.trimeditor.config.ConfigLoader
 import org.jan1k.plugin.trimeditor.config.PluginConfig
@@ -39,6 +40,7 @@ open class TrimEditorPlugin : JavaPlugin() {
         getCommand("trimeditor")?.setExecutor(command)
         getCommand("trimeditor")?.tabCompleter = command
         server.pluginManager.registerEvents(EditorListener(gui), this)
+        startMetrics()
     }
 
     override fun onDisable() {
@@ -61,5 +63,21 @@ open class TrimEditorPlugin : JavaPlugin() {
             return ClickGuard.DEFAULT_COOLDOWN_MILLIS
         }
         return pluginConfig.gui.cooldownMillis.coerceAtLeast(0)
+    }
+
+    private fun startMetrics() {
+        if (Metrics::class.java.name.startsWith(unrelocatedBstatsPackage())) {
+            return
+        }
+
+        Metrics(this, BSTATS_PLUGIN_ID)
+    }
+
+    private fun unrelocatedBstatsPackage(): String {
+        return arrayOf("org", "bstats").joinToString(".") + "."
+    }
+
+    companion object {
+        const val BSTATS_PLUGIN_ID = 31971
     }
 }
