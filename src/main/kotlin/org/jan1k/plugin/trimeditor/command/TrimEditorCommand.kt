@@ -1,5 +1,6 @@
 package org.jan1k.plugin.trimeditor.command
 
+import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -8,24 +9,27 @@ import org.bukkit.entity.Player
 import org.jan1k.plugin.trimeditor.TrimEditorPlugin
 import org.jan1k.plugin.trimeditor.gui.EditorGui
 import org.jan1k.plugin.trimeditor.session.SessionManager
+import java.util.logging.Level
 
 class TrimEditorCommand(
     private val plugin: TrimEditorPlugin,
     private val sessions: SessionManager,
     private val gui: EditorGui,
 ) : CommandExecutor, TabCompleter {
+    private val mini = MiniMessage.miniMessage()
+
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (args.firstOrNull()?.equals("reload", ignoreCase = true) == true) {
             return reload(sender)
         }
 
         if (sender !is Player) {
-            sender.sendMessage("Only players can use TrimEditor.")
+            send(sender, plugin.lang.message("errors.player-only"))
             return true
         }
 
         if (!sender.hasPermission("trimeditor.use")) {
-            sender.sendMessage("You do not have permission.")
+            send(sender, plugin.lang.message("errors.no-permission"))
             return true
         }
 
@@ -45,17 +49,28 @@ class TrimEditorCommand(
 
     private fun reload(sender: CommandSender): Boolean {
         if (!sender.hasPermission("trimeditor.reload")) {
-            sender.sendMessage("You do not have permission.")
+            send(sender, plugin.lang.message("errors.no-permission"))
             return true
         }
 
         val started = System.nanoTime()
-        sessions.closeAll()
-        plugin.reloadConfig()
-        gui.updateCooldownMillis(plugin.clickCooldownMillis())
-        val elapsed = (System.nanoTime() - started) / 1_000_000
+        return try {
+            sessions.closeAll()
+            plugin.reloadConfig()
+            plugin.reloadLang()
+            gui.updateCooldownMillis(plugin.clickCooldownMillis())
 
-        sender.sendMessage("TrimEditor reloaded in ${elapsed}ms.")
-        return true
+            val elapsed = (System.nanoTime() - started) / 1_000_000
+            send(sender, plugin.lang.message("admin.reload", "time" to elapsed.toString()))
+            true
+        } catch (ex: Exception) {
+            plugin.logger.log(Level.SEVERE, "TrimEditor reload failed", ex)
+            send(sender, plugin.lang.message("admin.reload-failed"))
+            true
+        }
+    }
+
+    private fun send(sender: CommandSender, raw: String) {
+        sender.sendMessage(mini.deserialize(raw))
     }
 }

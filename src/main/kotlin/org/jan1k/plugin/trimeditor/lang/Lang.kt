@@ -10,8 +10,13 @@ data class Lang(
     val prefix: String,
     private val messages: Map<String, String>,
 ) {
-    fun message(path: String): String {
-        return messages[path]?.replace("<prefix>", prefix) ?: path
+    fun message(path: String, vararg placeholders: Pair<String, String>): String {
+        val raw = messages[path] ?: return path
+        var result = raw.replace("<prefix>", prefix)
+        for ((key, value) in placeholders) {
+            result = result.replace("<$key>", value)
+        }
+        return result
     }
 
     companion object {

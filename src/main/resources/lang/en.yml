@@ -2,7 +2,7 @@ locale: en
 prefix: "<dark_gray>[<aqua>ᴛʀɪᴍ<dark_gray>] "
 messages:
   admin:
-    reload: "<prefix><green>ʀᴇʟᴏᴀᴅᴇᴅ<gray>."
+    reload: "<prefix><green>ʀᴇʟᴏᴀᴅᴇᴅ<gray> in <time>ms."
     reload-failed: "<prefix><red>ʀᴇʟᴏᴀᴅ failed<gray>. Check console."
   errors:
     no-permission: "<red>No permission."
