@@ -9,6 +9,8 @@ copyright: Copyright &copy; 2026 jan1k
 
 theme:
   name: material
+  logo: assets/pfp.png
+  favicon: assets/pfp.png
   palette:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate

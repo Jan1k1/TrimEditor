@@ -1,5 +1,7 @@
 # TrimEditor
 
+![TrimEditor profile](assets/pfp.png){ width="160" align=right }
+
 A lightweight [Paper](https://papermc.io/) plugin for editing **armor trims** on
 the item in your hand. Run a command, pick a pattern, pick a material, confirm.
 No anvils, no smithing-table grind, no NMS.
