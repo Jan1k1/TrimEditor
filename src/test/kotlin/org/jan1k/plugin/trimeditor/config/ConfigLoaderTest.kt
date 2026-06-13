@@ -29,6 +29,19 @@ class ConfigLoaderTest {
     }
 
     @Test
+    fun `generated config includes help links and setting notes`() {
+        val path = createTempDirectory("trimeditor-config").resolve("config.yml")
+
+        ConfigLoader().load(path)
+        val generated = Files.readString(path)
+
+        assertTrue(generated.contains("https://jan1k1.github.io/TrimEditor/"))
+        assertTrue(generated.contains("https://github.com/Jan1k1/TrimEditor/issues"))
+        assertTrue(generated.contains("Default setup is free editing."))
+        assertTrue(generated.contains("Do not change config-version by hand."))
+    }
+
+    @Test
     fun `migration adds missing keys without replacing existing values`() {
         val path = createTempDirectory("trimeditor-config").resolve("config.yml")
         Files.writeString(

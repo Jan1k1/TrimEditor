@@ -30,7 +30,7 @@ copy in your plugin's `libs/` folder:
 
 ```kotlin
 dependencies {
-    compileOnly(files("libs/TrimEditor-0.1.0.jar"))
+    compileOnly(files("libs/TrimEditor-0.1.1.jar"))
 }
 ```
 

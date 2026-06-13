@@ -123,7 +123,7 @@ Compile against the TrimEditor jar:
 
 ```kotlin
 dependencies {
-    compileOnly(files("libs/TrimEditor-0.1.0.jar"))
+    compileOnly(files("libs/TrimEditor-0.1.1.jar"))
 }
 ```
 
@@ -141,7 +141,7 @@ Local test server:
 .\gradlew.bat runServer
 ```
 
-The shaded jar is written to `build/libs/TrimEditor-0.1.0.jar`.
+The shaded jar is written to `build/libs/TrimEditor-0.1.1.jar`.
 
 ## Important URLs
 
