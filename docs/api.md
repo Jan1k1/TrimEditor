@@ -40,8 +40,8 @@ hide the trim feature.
 ## Open the editor
 
 ```kotlin
-import org.jan1k.plugin.trimeditor.api.TrimEditorOpenResult
-import org.jan1k.plugin.trimeditor.api.TrimEditorProvider
+import org.jan1k.trimeditor.api.TrimEditorOpenResult
+import org.jan1k.trimeditor.api.TrimEditorProvider
 
 val api = TrimEditorProvider.get() ?: return
 if (api.apiVersion() != 1) return

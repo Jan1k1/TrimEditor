@@ -40,7 +40,7 @@ first use, then launches it with TrimEditor installed. Handy for manual testing.
 ## Project layout
 
 ```
-src/main/kotlin/org/jan1k/plugin/trimeditor/
+src/main/kotlin/org/jan1k/trimeditor/
   api/        # public Bukkit service for other plugins
   command/    # /te command + tab completion
   config/     # config model, loader, migration

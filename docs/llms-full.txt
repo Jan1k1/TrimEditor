@@ -84,7 +84,7 @@ Sounds are configured per action under `sounds`.
 
 ## API
 
-TrimEditor registers `org.jan1k.plugin.trimeditor.api.TrimEditorApi` as a Bukkit service. Other plugins should use `TrimEditorProvider.get()` and treat a null result as "TrimEditor is not installed".
+TrimEditor registers `org.jan1k.trimeditor.api.TrimEditorApi` as a Bukkit service. Other plugins should use `TrimEditorProvider.get()` and treat a null result as "TrimEditor is not installed".
 
 Basic Kotlin usage:
 

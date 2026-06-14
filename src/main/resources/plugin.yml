@@ -1,6 +1,6 @@
 name: TrimEditor
 version: '${version}'
-main: org.jan1k.plugin.trimeditor.TrimEditorPlugin
+main: org.jan1k.trimeditor.TrimEditorPlugin
 api-version: '1.21'
 folia-supported: true
 softdepend:

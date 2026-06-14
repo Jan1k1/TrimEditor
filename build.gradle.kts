@@ -6,7 +6,7 @@ plugins {
     id("xyz.jpenilla.run-paper") version "3.0.2"
 }
 
-group = "org.jan1k.plugin"
+group = "org.jan1k"
 version = "0.1.1"
 
 val pluginVersion = version.toString()
@@ -45,7 +45,7 @@ tasks {
 
     named<ShadowJar>("shadowJar") {
         archiveClassifier.set("")
-        relocate("org.bstats", "org.jan1k.plugin.trimeditor.libs.bstats")
+        relocate("org.bstats", "org.jan1k.trimeditor.libs.bstats")
         minimize()
     }
 

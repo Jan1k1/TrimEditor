@@ -1,0 +1,30 @@
+package org.jan1k.trimeditor.gui
+
+import org.bukkit.entity.Player
+import org.bukkit.event.inventory.InventoryType
+import org.jan1k.trimeditor.config.PluginConfig
+import org.jan1k.trimeditor.cost.RequirementService
+import org.jan1k.trimeditor.session.EditSession
+
+enum class ScreenId {
+    PATTERNS,
+    MATERIALS,
+    CONFIRM,
+}
+
+interface Screen {
+    val id: ScreenId
+    val title: String
+    val size: Int
+    val inventoryType: InventoryType?
+        get() = null
+
+    fun buttons(context: ScreenRenderContext): List<Button>
+}
+
+class ScreenRenderContext(
+    val player: Player,
+    val session: EditSession,
+    val config: PluginConfig,
+    val requirements: RequirementService,
+)
